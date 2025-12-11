@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       run-job:
-        description: run_job
+        description: "Run Specific Job"
         type: boolean
-        boolean: false
+        required: false 
       custom-message:
-        description: Enter a custom message
+        description: "Enter a custom message"
         type: string
-        boolean: true
-
+        required: true
+        
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -22,5 +22,5 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-        Name: Printing Custom Message
-      - runs: echo $ {{ inputs.custom_message }}
+      - name: Printing Custom Message
+        run: echo "${{ inputs.custom-message }}"
